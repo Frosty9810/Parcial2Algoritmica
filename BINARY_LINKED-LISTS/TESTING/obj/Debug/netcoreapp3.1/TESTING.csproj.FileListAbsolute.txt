@@ -1,0 +1,13 @@
+C:\Users\HP\source\repos\TESTING\TESTING\obj\Debug\netcoreapp3.1\TESTING.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\TESTING\TESTING\obj\Debug\netcoreapp3.1\TESTING.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\TESTING\TESTING\obj\Debug\netcoreapp3.1\TESTING.AssemblyInfoInputs.cache
+C:\Users\HP\source\repos\TESTING\TESTING\obj\Debug\netcoreapp3.1\TESTING.AssemblyInfo.cs
+C:\Users\HP\source\repos\TESTING\TESTING\bin\Debug\netcoreapp3.1\TESTING.exe
+C:\Users\HP\source\repos\TESTING\TESTING\bin\Debug\netcoreapp3.1\TESTING.deps.json
+C:\Users\HP\source\repos\TESTING\TESTING\bin\Debug\netcoreapp3.1\TESTING.runtimeconfig.json
+C:\Users\HP\source\repos\TESTING\TESTING\bin\Debug\netcoreapp3.1\TESTING.runtimeconfig.dev.json
+C:\Users\HP\source\repos\TESTING\TESTING\bin\Debug\netcoreapp3.1\TESTING.dll
+C:\Users\HP\source\repos\TESTING\TESTING\bin\Debug\netcoreapp3.1\TESTING.pdb
+C:\Users\HP\source\repos\TESTING\TESTING\obj\Debug\netcoreapp3.1\TESTING.dll
+C:\Users\HP\source\repos\TESTING\TESTING\obj\Debug\netcoreapp3.1\TESTING.pdb
+C:\Users\HP\source\repos\TESTING\TESTING\obj\Debug\netcoreapp3.1\TESTING.genruntimeconfig.cache
