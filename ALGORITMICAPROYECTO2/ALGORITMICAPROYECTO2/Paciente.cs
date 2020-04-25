@@ -12,19 +12,19 @@ namespace ALGORITMICAPROYECTO2
     public class Paciente 
     {
         private int llave;
-        private string valor;
+        private string nombre;
 
         private estado miEstado;
 
         //ahora las propiedades de cada uno de los atributos declarados
         public int Llave { get => llave; set => llave = value; }
-        public string Valor { get => valor; set => valor = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
         internal estado MiEstado { get => miEstado; set => miEstado = value; }
 
         public Paciente()
         {
             llave = 0;
-            valor = "";
+            nombre = "";
             miEstado = estado.vacio; //valor definido en el enum
         }
     }

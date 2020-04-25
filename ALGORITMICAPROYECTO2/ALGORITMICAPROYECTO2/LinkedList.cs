@@ -9,7 +9,9 @@ namespace ALGORITMICAPROYECTO2
         public class Nodo
         {
             public int info;
-            public int id;
+            public string id;
+            public string tipo;
+            public string date;
             public Nodo ant, sig;
         }
 
@@ -20,22 +22,15 @@ namespace ALGORITMICAPROYECTO2
         }
         //INSERTAR AL PRINCIPIO
 
-        public void InsertarPrimero(int x, int id)
+
+        public void InsertarFinal(int x, string id, string tipo, string date)
         {
+
             Nodo nuevo = new Nodo();
             nuevo.info = x;
             nuevo.id = id;
-            nuevo.sig = raiz;
-
-            if (raiz != null)
-                raiz.ant = nuevo;
-            raiz = nuevo;
-        }
-        public void InsertarFinal(int x)
-        {
-
-            Nodo nuevo = new Nodo();
-            nuevo.info = x;
+            nuevo.tipo = tipo;
+            nuevo.date = date;
             if (raiz == null)
                 raiz = nuevo;
             else
@@ -52,41 +47,7 @@ namespace ALGORITMICAPROYECTO2
 
         }
 
-        //INSERTAR EN POSICION
-        public void insertar(int pos, int x)
-        {
-            if (pos <= Cantidad() + 1)
-            {
-                Nodo nuevo = new Nodo();
-                nuevo.info = x;
-               
-                if (pos == 1)
-                {
-                    nuevo.sig = raiz;
-                    raiz = nuevo;
-                }
-                else
-                    if (pos == Cantidad() + 1)
-                {
-                    Nodo reco = raiz;
-                    while (reco.sig != null)
-                    {
-                        reco = reco.sig;
-                    }
-                    reco.sig = nuevo;
-                    nuevo.sig = null;
-                }
-                else
-                {
-                    Nodo reco = raiz;
-                    for (int f = 1; f <= pos - 2; f++)
-                        reco = reco.sig;
-                    Nodo siguiente = reco.sig;
-                    reco.sig = nuevo;
-                    nuevo.sig = siguiente;
-                }
-            }
-        }
+
         public void Borrar(int pos)
         {
             if (pos <= Cantidad())
@@ -111,60 +72,6 @@ namespace ALGORITMICAPROYECTO2
                 }
             }
         }
-
-
-
-
-        public int Extraer(int pos)
-        {
-            if (pos <= Cantidad())
-            {
-                int informacion;
-                if (pos == 1)
-                {
-                    informacion = raiz.info;
-                    raiz = raiz.sig;
-                    if (raiz != null)
-                        raiz.ant = null;
-                }
-                else
-                {
-                    Nodo reco;
-                    reco = raiz;
-                    for (int f = 1; f <= pos - 2; f++)
-                        reco = reco.sig;
-                    Nodo prox = reco.sig;
-                    reco.sig = prox.sig;
-                    Nodo siguiente = prox.sig;
-                    if (siguiente != null)
-                        siguiente.ant = reco;
-                    informacion = prox.info;
-                }
-                return informacion;
-            }
-            else
-                return int.MaxValue;
-        }
-
-
-
-        public void Intercambiar(int pos1, int pos2)
-        {
-            if (pos1 <= Cantidad() && pos2 <= Cantidad())
-            {
-                Nodo reco1 = raiz;
-                for (int f = 1; f < pos1; f++)
-                    reco1 = reco1.sig;
-                Nodo reco2 = raiz;
-                for (int f = 1; f < pos2; f++)
-                    reco2 = reco2.sig;
-                int aux = reco1.info;
-                reco1.info = reco2.info;
-                reco2.info = aux;
-            }
-        }
-
-
         public int Cantidad()
         {
             int cant = 0;
@@ -204,7 +111,7 @@ namespace ALGORITMICAPROYECTO2
             Nodo reco = raiz;
             while (reco != null)
             {
-                Console.Write(reco.info + "-");
+                Console.Write("[" + reco.info + "]" + "->" + reco.id + " - " + reco.date + "-" + reco.tipo);
                 reco = reco.sig;
             }
 

@@ -7,26 +7,26 @@ namespace ALGORITMICAPROYECTO2
 {
 	class Program
 	{
+        // private static Paciente[] tabla; //declaramos el arreglo que será la tabla  hash
+        private static int cantidad = 11; //representa el tamaño del arreglo
         static void Main(string[] args)
         {
 
-            Hash miTabla = new Hash(11);
+            Hash pr = new Hash(cantidad);
 
-            //insertamos elementos e imprimimos
-            miTabla.Insertar(23, "Materia");
-            miTabla.Insertar(51, "Algorítmica");
-            miTabla.Insertar(40, "Tema");
-            miTabla.Insertar(62, "Estructuras Hash");
-            miTabla.Insertar(32, "Método");
-            miTabla.Insertar(11, "Resolución de colisiones");
-            miTabla.Insertar(21, "Usando Rehash");
+            pr.Añadir(11, "Rivas", "Internado", "14/2/2020");
+            pr.Añadir(11, "Rivas", "Internado", "14/2/2020");
+            pr.Añadir(11, "Rivas", "Internado", "14/2/2020");
 
-            miTabla.Mostrar();
+            pr.Añadir(2, "Rivas", "Internado", "14/2/2020");
+            pr.Añadir(3, "Rivas", "Internado", "14/2/2020");
+            pr.Añadir(4, "Rivas", "Internado", "14/2/2020");
 
-           
-            miTabla.Buscar(21);
-            miTabla.Eliminar(51);
-            miTabla.Mostrar(); 
+            pr.MostrarPacientes();
+
+            Console.ReadLine();
+
+
 
             Console.ReadLine();
 
