@@ -40,15 +40,29 @@ namespace ALGORITMICAPROYECTO2
                         case 0:
                             break;
                         case 1:
+                            Console.WriteLine("--------Añadir paciente---------");
+                            Console.WriteLine("Nombre del paciente:");
+                            string name = Console.ReadLine();
+                            Console.WriteLine("CI del paciente:");
+                            int id = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Tipo de paciente:");
+                            string tipopaciente = Console.ReadLine();
+                            Console.WriteLine("Fecha de ingreso:");
+                            string fechaingreso = Console.ReadLine();
+                          
+                            hashtable.Añadir(id,name,tipopaciente,fechaingreso);
+                            
                             break;
                         case 2:
+
                             break;
                         case 3:
+
                             break;
                         case 4:
+                            hashtable.MostrarPacientes();
                             break;
-                        case 5:
-                            break;
+                        
                         default:
                             Console.WriteLine("Opción invalida, intenta de nuevo");
                             break;

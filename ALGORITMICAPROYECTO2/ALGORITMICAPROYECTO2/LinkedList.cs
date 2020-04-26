@@ -13,6 +13,7 @@ namespace ALGORITMICAPROYECTO2
             public string tipo;
             public string date;
             public Nodo ant, sig;
+            public int tamaño=0;
         }
 
         Nodo raiz;
@@ -20,17 +21,16 @@ namespace ALGORITMICAPROYECTO2
         {
             raiz = null;
         }
-        //INSERTAR AL PRINCIPIO
 
-
+       
         public void InsertarFinal(int x, string id, string tipo, string date)
         {
-
             Nodo nuevo = new Nodo();
             nuevo.info = x;
             nuevo.id = id;
             nuevo.tipo = tipo;
             nuevo.date = date;
+            nuevo.tamaño ++;
             if (raiz == null)
                 raiz = nuevo;
             else
@@ -42,6 +42,7 @@ namespace ALGORITMICAPROYECTO2
                 }
                 reco.sig = nuevo;
                 nuevo.ant = reco;
+                
             }
 
 
@@ -97,6 +98,57 @@ namespace ALGORITMICAPROYECTO2
             }
             return false;
         }
+        public bool ExisteSecuencial(Nodo head,int value) {
+            Nodo start = head;
+            Nodo last = null;
+            
+            do
+            {
+                // Encontrar el medio
+                Nodo mid = middleNode(start, last);
+
+                // Si el medio esta vacio
+                if (mid == null)
+                    return false;
+
+                // Si el valor esta en el meedio 
+                if (mid.info == value)
+                    return true;
+
+                // Si el medio es mayor al valor
+                else if (mid.info > value)
+                {
+                    start = mid.sig;
+                }
+
+                // Si el valor es mayor al del medio 
+                else
+                    last = mid;
+            } while (last == null || last != start);
+
+            //si no existe. 
+            return false;
+        }   
+        static Nodo middleNode(Nodo start, Nodo last)
+        {
+            if (start == null)
+                return null;
+
+            Nodo slow = start;
+            Nodo fast = start.sig;
+
+            while (fast != last)
+            {
+                fast = fast.sig;
+                if (fast != last)
+                {
+                    slow = slow.sig;
+                    fast = fast.sig;
+                }
+            }
+            return slow;
+        }
+
 
         public bool Vacia()
         {

@@ -21,6 +21,9 @@ namespace ALGORITMICAPROYECTO2
             pr.Añadir(2, "Rivas", "Internado", "14/2/2020");
             pr.Añadir(3, "Rivas", "Internado", "14/2/2020");
             pr.Añadir(4, "Rivas", "Internado", "14/2/2020");
+            pr.BuscarSecuencial(1);
+            pr.Buscar(2);
+            pr.Eliminar(2);
 
             pr.MostrarPacientes();
 
