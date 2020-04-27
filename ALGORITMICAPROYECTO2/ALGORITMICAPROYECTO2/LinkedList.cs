@@ -6,6 +6,8 @@ namespace ALGORITMICAPROYECTO2
 {
     class LinkedList
     {
+        private int count;
+
         public class Nodo
         {
             public int info;
@@ -22,7 +24,64 @@ namespace ALGORITMICAPROYECTO2
             raiz = null;
         }
 
-       
+        public Nodo Search(int data)
+        {
+            Nodo found = Search(raiz, data);
+            if (found == null)
+            {
+                Console.WriteLine("Busqueda sin fin");
+            }
+            return found;
+        }
+        //EXISTE SECUENCIAL
+        public bool ExisteSecuencial(string x)
+        {
+            Nodo reco = raiz;
+            while (reco != null)
+            {
+                if (reco.id == x)
+                    return true;
+                reco = reco.sig;
+            }
+            return false;
+        }
+        public void Existe(int data)
+        {
+
+            Nodo removing = Search(raiz, data);
+            if (removing == null)
+            {
+                Console.WriteLine("Valor no encontrado.");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("CI: {0} encontrado ",data);
+            }
+
+        }
+
+        //Search recursively finds the first instance of a Node with given data and returns that Node.
+        private Nodo Search(Nodo parental, int data)
+        {
+            Nodo left = parental.ant;
+            Nodo right = parental.sig;
+            if (parental.info == data)
+            {
+                return parental;
+            }
+
+            if (data <= parental.info && left != null)
+            {
+                return Search(left, data);
+            }
+
+            if (data > parental.info && right != null)
+            {
+                return Search(right, data);
+            }
+            return null;
+        }
         public void InsertarFinal(int x, string id, string tipo, string date)
         {
             Nodo nuevo = new Nodo();
@@ -40,15 +99,164 @@ namespace ALGORITMICAPROYECTO2
                 {
                     reco = reco.sig;
                 }
+                //current now =reco
+                //firstnode = raiz
                 reco.sig = nuevo;
                 nuevo.ant = reco;
-                
+             }
+        }
+        private Nodo NodeAt(int index)
+        {
+            if (raiz != null && index >= 0)
+            {
+                Nodo node = raiz;
+                for (int i = 0; i <= index; i++)
+                {
+                    if (index == i)
+                    {
+                        break;
+                    }
+                    
+                    node = node.sig;
+                }
+
+                return node;
             }
+            else if (index < 0)
+            {
+                return this.NodeAt(Count() + index); //Positive index/offset
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+        }
+        public void Remove(string value)
+        {
+            int position = IndexOf(value);
 
-
+            if (position >= 0)
+            {
+                if (position == 0)
+                {
+                    raiz = raiz.sig;
+                }
+                else if (position >= 1 )
+                {
+                    NodeAt(position - 1).sig = NodeAt(position + 1);
+                }
+               
+                count--;
+            }
         }
 
+        //Busqueda por nombre
+        public int IndexOf(string value)
+        {
+            Nodo reco = raiz;
+            int position = 0;
+            bool found = false;
+            if (raiz == null)
+            {
+                position = -1;
+            }
+            else
+            {
+                //position++;
+                while (reco != null)
+                {
+                    if (value == reco.id)
+                    {
+                        found = true;
+                        break;
+                    }
+                    reco = reco.sig;
+                    position++;
+                }
+                if (!found)
+                {
+                    position = -1;
+                }
+            }
+            return position;
+        }
+        //Busqueda por ci
+        public int IndexOfCI(int value)
+        {
+            Nodo reco = raiz;
+            int position = 0;
+            bool found = false;
+            if (raiz == null)
+            {
+                position = -1;
+            }
+            else
+            {
+                //position++;
+                while (reco != null)
+                {
+                    if (value == reco.info)
+                    {
+                        found = true;
+                        break;
+                    }
+                    reco = reco.sig;
+                    position++;
+                }
+                if (!found)
+                {
+                    position = -1;
+                }
+            }
+            return position;
+        }
+        //BUSQUEDA POR NOMBRE
+        public bool Existe(string x)
+        {
+            Nodo reco = raiz;
+            while (reco != null)
+            {
+                if (reco.id == x)
+                {
+                    return true;
+                }
+                reco = reco.sig;
+            }
+            return false;
+        }
+        //BUSQUEDA POR CI
+        public bool ExisteCI(int x)
+        {
+            Nodo reco = raiz;
+            while (reco != null)
+            {
+                if (reco.info == x)
+                {
+                    return true;
+                }
+                reco = reco.sig;
+            }
+            return false;
+        }
 
+        public void Eliminar(int pos) {
+            int position = IndexOfCI(pos);
+
+            if (position >= 0)
+            {
+                if (position == 0)
+                {
+                    raiz = raiz.sig;
+                }
+                else if (position >= 1)
+                {
+                    NodeAt(position - 1).sig = NodeAt(position + 1);
+                }
+
+                count--;
+            }
+        }
+        
         public void Borrar(int pos)
         {
             if (pos <= Cantidad())
@@ -73,7 +281,8 @@ namespace ALGORITMICAPROYECTO2
                 }
             }
         }
-        public int Cantidad()
+        
+            public int Cantidad()
         {
             int cant = 0;
             Nodo reco = raiz;
@@ -84,24 +293,15 @@ namespace ALGORITMICAPROYECTO2
             }
             return cant;
         }
-
-
-
-        public bool Existe(int x)
+        //Busqueda secuencial
+        public int Count()
         {
-            Nodo reco = raiz;
-            while (reco != null)
-            {
-                if (reco.info == x)
-                    return true;
-                reco = reco.sig;
-            }
-            return false;
+            return count;
         }
-        public bool ExisteSecuencial(Nodo head,int value) {
+        public bool ExisteBooleana(Nodo head,int value) {
             Nodo start = head;
             Nodo last = null;
-            
+              
             do
             {
                 // Encontrar el medio
@@ -146,8 +346,10 @@ namespace ALGORITMICAPROYECTO2
                     fast = fast.sig;
                 }
             }
+            Console.WriteLine("El numero del medio es {0}",slow);
             return slow;
         }
+
 
 
         public bool Vacia()
@@ -163,7 +365,17 @@ namespace ALGORITMICAPROYECTO2
             Nodo reco = raiz;
             while (reco != null)
             {
-                Console.Write("[" + reco.info + "]" + "->" + reco.id + " - " + reco.date + "-" + reco.tipo);
+                Console.Write("[" + reco.info + "]" + "->" + reco.id + " - " + reco.date + "-" + reco.tipo+"-- ");
+                reco = reco.sig;
+            }
+
+        }
+        public void ImprimirporCI()
+        {
+            Nodo reco = raiz;
+            while (reco != null)
+            {
+                Console.Write("{" + reco.info + "}" + "->" );
                 reco = reco.sig;
             }
 
