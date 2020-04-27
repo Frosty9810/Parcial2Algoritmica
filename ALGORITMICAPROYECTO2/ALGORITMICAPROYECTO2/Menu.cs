@@ -25,9 +25,11 @@ namespace ALGORITMICAPROYECTO2
 
             while (choiceInMenu != 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("------------------------------------------");
                 Console.WriteLine("              Linked Hash Table           ");
                 Console.WriteLine("------------------------------------------");
+                Console.ResetColor();
                 Console.WriteLine("Que desea hacer:                          ");
                 Console.WriteLine("     1) Añadir Paciente                   ");
                 Console.WriteLine("     2) Buscar Paciente                   ");
@@ -81,6 +83,7 @@ namespace ALGORITMICAPROYECTO2
                     Console.WriteLine("Opción inválida");
                     choiceInMenu = -1;
                 }
+                Console.Clear();
             }
         }
         private void MenuBuscar() 
@@ -110,18 +113,30 @@ namespace ALGORITMICAPROYECTO2
                             Console.WriteLine("");
                             Console.WriteLine("--------Buscar paciente---------");
                             Console.WriteLine("");
-                           
+                            Console.ResetColor();
                             Console.WriteLine("Nombre del paciente:");
                             string name = Console.ReadLine();
                             sw.Start();
                             hashtable2.BuscarSecuencial(name);
                             sw.Stop();
-                            Console.WriteLine("Tiempo que tarde en hacer la busqueda: {0}", sw.ElapsedTicks); 
+                            Console.WriteLine("Tiempo que tarde en hacer la busqueda: {0:N0}", sw.ElapsedTicks); 
 
                             sw.Reset();
                             break;
                         case 2:
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("");
+                            Console.WriteLine("--------Buscar paciente---------");
+                            Console.WriteLine("");
+                            Console.ResetColor();
+                            Console.WriteLine("Cedula de Identidad del paciente:");
+                            int ci = Convert.ToInt32(Console.ReadLine());
+                            sw.Start();
+                            hashtable.BusquedaBinaria(ci);
+                            sw.Stop();
+                            Console.WriteLine("Tiempo que tarde en hacer la busqueda: {0:N0}", sw.ElapsedTicks);
 
+                            sw.Reset();
                             break;
                         default:
                             Console.WriteLine("Opción invalida, intenta de nuevo");
@@ -133,6 +148,8 @@ namespace ALGORITMICAPROYECTO2
                     Console.WriteLine("Opción inválida");
                     choiceInMenu = -1;
                 }
+                
+
             }
         }
         private void MenuEliminar()
@@ -161,8 +178,10 @@ namespace ALGORITMICAPROYECTO2
                             Console.WriteLine("--------Eliminar paciente---------");
 
                             Console.WriteLine("");
-                            Console.WriteLine("--------Eliminar paciente---------");
+                            Console.ResetColor();
+
                             Console.WriteLine("Nombre del paciente:");
+                            Console.ResetColor();
                             string name = Console.ReadLine();
                             hashtable2.EliminarNombre(name);
                             hashtable.EliminarSecuencialmente(name);
@@ -195,9 +214,14 @@ namespace ALGORITMICAPROYECTO2
 
             while (choiceInMenu != 0)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("");
                 Console.WriteLine("------------------------------------------");
                 Console.WriteLine("            Menu Mostrar Paciente         ");
                 Console.WriteLine("------------------------------------------");
+                Console.WriteLine("");
+                Console.ResetColor();
+               
                 Console.WriteLine("Que desea hacer:                          ");
                 Console.WriteLine("     1) Mostrar todos los datos de los pacientes");
                 Console.WriteLine("     2) Mostrar solo las Cédula de Identidad de los pacientes");

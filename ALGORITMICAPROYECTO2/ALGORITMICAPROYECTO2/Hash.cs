@@ -34,7 +34,7 @@ namespace ALGORITMICAPROYECTO2
         public void BusquedaBinaria(int id) {
             int indice = 0;
             indice = FuncionHash(id);
-            tabla[indice].Existe(id);
+            tabla[indice].ExisteBinario(id);
 
         }
         //ELIMINAR POR NOMBRE 
