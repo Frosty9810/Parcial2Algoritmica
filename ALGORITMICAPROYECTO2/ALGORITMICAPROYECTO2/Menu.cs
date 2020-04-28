@@ -7,7 +7,7 @@ namespace ALGORITMICAPROYECTO2
    
     class Menu
     {
-
+        //MANDA EL TAMAÑO DEL HASH
         private static int numberOfElements = 23;
        
         private Hash hashtable = new Hash(numberOfElements);
@@ -58,7 +58,7 @@ namespace ALGORITMICAPROYECTO2
                             string tipopaciente = Console.ReadLine();
                             Console.WriteLine("Fecha de ingreso: ");
                             string fechaingreso = Console.ReadLine();
-                           
+                           //REGISTRO ALMACENADO EN LAS DOS ESTRUCTURAS HASH DE 23
                             hashtable.Añadir(id,name,tipopaciente,fechaingreso);
                             hashtable2.Añadir(id,name,tipopaciente,fechaingreso);
                             break;
@@ -183,14 +183,17 @@ namespace ALGORITMICAPROYECTO2
                             Console.WriteLine("Nombre del paciente:");
                             Console.ResetColor();
                             string name = Console.ReadLine();
+                            //AQUI SE ELIMINA DE LAS DOS TABLAS
                             hashtable2.EliminarNombre(name);
                             hashtable.EliminarSecuencialmente(name);
                             break;
                         case 2:
                             Console.WriteLine("--------Eliminar paciente---------");
-                            Console.WriteLine("Nombre del paciente:");
+                            Console.WriteLine("CEDULA DE IDENTIDAD del paciente:");
                           //errror
                             int ci = Convert.ToInt32(Console.ReadLine());
+                            //AQUI SE ELIMINA DE LAS DOS TABLAS
+
                             hashtable.EliminarSecuencial(ci);
                             hashtable2.EliminarCedula(ci);
                             break;

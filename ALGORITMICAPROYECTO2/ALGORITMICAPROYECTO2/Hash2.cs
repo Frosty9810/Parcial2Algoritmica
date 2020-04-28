@@ -45,6 +45,16 @@ namespace ALGORITMICAPROYECTO2
                     if (tabla[indice].ExisteSecuencial(name))
                     {
                         Console.WriteLine("El Nombre: {0} esta en el hospital", name);
+                        Console.WriteLine("");
+                         Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("---------------DATOS DEL PACIENTE ENCONTRADO--------");
+                        Console.WriteLine("");
+
+                        Console.ResetColor();
+                        tabla[indice].ImprimirName(name);
+                        Console.WriteLine(" ");
+                        Console.WriteLine("");
+
                         existe = false;
                     }
                     else
@@ -61,7 +71,7 @@ namespace ALGORITMICAPROYECTO2
 
 
         }
-
+        //ELIMINAR CEDULA CON BUSQUEDA BINARIA
         public void EliminarCedula(int id)
         {
             int indice = 0;
@@ -71,7 +81,7 @@ namespace ALGORITMICAPROYECTO2
             {
                 while (existe)
                 {
-                    if (tabla[indice].ExisteCI(id))
+                    if (tabla[indice].ExisteBinario(id))
                     {
                         caca++;
                         Console.WriteLine(caca);
@@ -93,6 +103,7 @@ namespace ALGORITMICAPROYECTO2
 
 
         }
+        //ELIMINAR NOMBRE BUSQUEDA SECUENCIAL
         public void EliminarNombre(string id)
         {
             int indice = 0;

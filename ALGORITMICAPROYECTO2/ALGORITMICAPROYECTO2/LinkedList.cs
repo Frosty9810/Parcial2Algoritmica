@@ -46,43 +46,47 @@ namespace ALGORITMICAPROYECTO2
             return false;
         }
         //BUSQUEDA BINARIA
-        public void ExisteBinario(int data)
+        public bool ExisteBinario(int data)
         {
 
             Nodo removing = Search(raiz, data);
             if (removing == null)
             {
                 Console.WriteLine("Valor no encontrado.");
-                return;
+                return true;
             }
             else
             {
                 Console.WriteLine("CI: {0} encontrado ",data);
             }
-
+            return false;
         }
         //BUSQUEDA RECURSIVA
         private Nodo Search(Nodo parental, int data)
         {
-                 
-                Nodo left = parental.ant;
-                Nodo right = parental.sig;
+            try
+            {
+
+               
                 if (parental.info == data)
                 {
                     return parental;
                 }
-
-                if (data <= parental.info && left != null)
+                if (data <= parental.info && parental.ant != null)
                 {
-                    return Search(left, data);
+                    return Search(parental.ant, data);
                 }
 
-                if (data > parental.info && right != null)
+                if (data > parental.info && parental.sig != null)
                 {
-                    return Search(right, data);
+                    return Search(parental.sig, data);
                 }
-            
-                
+            }
+            catch (NullReferenceException e)
+            {
+              
+            }
+
             return null;
 
             
@@ -284,7 +288,34 @@ namespace ALGORITMICAPROYECTO2
             Nodo reco = raiz;
             while (reco != null)
             {
-                Console.Write("[" + reco.info + "]" + "->" + reco.id + " - " + reco.date + "-" + reco.tipo+"-- ");
+                Console.Write("CEDULA DE IDENTIDAD: " + reco.info + "," + " NOMBRE DEL PACIENTE: " + reco.id + ","+" FECHA DE INTERNACION: " + reco.date + ","+ " TIPO DE PACIENTE: "+ reco.tipo+ " ---> ");
+                reco = reco.sig;
+            }
+
+        }
+        public void ImprimirCI(int CI)
+        {
+            Nodo reco = raiz;
+            while (reco != null)
+            {
+                if (reco.info==CI) {
+                    Console.Write("CEDULA DE IDENTIDAD: " + reco.info + "," + " NOMBRE DEL PACIENTE: " + reco.id + "," + " FECHA DE INTERNACION: " + reco.date + "," + " TIPO DE PACIENTE: " + reco.tipo + " ---> ");
+
+                }
+                reco = reco.sig;
+            }
+
+        }
+        public void ImprimirName(string name)
+        {
+            Nodo reco = raiz;
+            while (reco != null)
+            {
+                if (reco.id == name)
+                {
+                    Console.Write("CEDULA DE IDENTIDAD: " + reco.info + "," + " NOMBRE DEL PACIENTE: " + reco.id + "," + " FECHA DE INTERNACION: " + reco.date + "," + " TIPO DE PACIENTE: " + reco.tipo );
+
+                }
                 reco = reco.sig;
             }
 

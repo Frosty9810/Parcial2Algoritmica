@@ -35,6 +35,17 @@ namespace ALGORITMICAPROYECTO2
             int indice = 0;
             indice = FuncionHash(id);
             tabla[indice].ExisteBinario(id);
+            
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("");
+                Console.WriteLine("---------------DATOS DEL PACIENTE ENCONTRADO--------");
+
+                Console.ResetColor();
+                tabla[indice].ImprimirCI(id);
+                Console.WriteLine("");
+                Console.WriteLine("");
+            
+           
 
         }
         //ELIMINAR POR NOMBRE 
@@ -101,17 +112,21 @@ namespace ALGORITMICAPROYECTO2
 
 
         }
+        //MUESTRA TODOS LOS DATOS DEL PACIENTE
         public void MostrarPacientes()
         {
             for (int i = 0; i < tabla.Length; i++)
             {
                 Console.WriteLine("");
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("["+i+"]");
+                Console.ResetColor();
                 Console.WriteLine("");
 
                 tabla[i].Imprimir();
             }
         }
+        //MUESTRA LOS PACIENTES POR CEDULA DE IDENTIDAD
         public void MostrarPacienteporCI() {
 
 
