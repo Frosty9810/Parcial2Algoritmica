@@ -12,7 +12,11 @@ namespace ALGORITMICAPROYECTO2
        
         private Hash hashtable = new Hash(numberOfElements);
         private Hash2 hashtable2 = new Hash2(numberOfElements);
-
+        private static string[] nombres = { "VICTOR HUGO", "JOSE LUIS","MARCEL BARRERO","AUGUSTO ALBORTA","GABRIEL ACOSTA","PABLO RIVAS","ALBERTO SOLIZ",
+        "SANTIAGO RELOS","CARLOS DE LA TORRE","DODROVOSKY MEDRANO","PEDRO","PABLO GONZALES","JOSE LUIS", "ALBERT EINSTEIN","SEBASTIAN","SOPA DO MACACO",
+        "ALISON PEREDO","MARCO ANTONIO","MATEO","CARLOS","URQUIDI LUIS","MEDINA NICOLAS","FERNANDA ESPINOZA","MARIA ESPINOZA","FERNANDA MONJE","RENATA TERRAZAS",
+        "FATIMA OPORTO","RICARDO CACERES","EMILIO BUTRAGEÑO","JORGE ORTUÑO","MARITZA RIVAS","JOSE PEREDO","MARCO SOLIZ","BRENDA SORA","FABIOLA MEDINA"
+        };
         public Menu()
         {
 
@@ -44,23 +48,7 @@ namespace ALGORITMICAPROYECTO2
                         case 0:
                             break;
                         case 1:
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine("");
-                            Console.WriteLine("--------Añadir paciente---------");
-                            Console.WriteLine("");
-
-                            Console.ResetColor();
-                            Console.WriteLine("Nombre del paciente: ");
-                            string name = Console.ReadLine();
-                            Console.WriteLine("CI del paciente:");
-                            int id = Convert.ToInt32(Console.ReadLine());
-                            Console.WriteLine("Tipo de paciente:Internado o Ambulatorio ");
-                            string tipopaciente = Console.ReadLine();
-                            Console.WriteLine("Fecha de ingreso: ");
-                            string fechaingreso = Console.ReadLine();
-                           //REGISTRO ALMACENADO EN LAS DOS ESTRUCTURAS HASH DE 23
-                            hashtable.Añadir(id,name,tipopaciente,fechaingreso);
-                            hashtable2.Añadir(id,name,tipopaciente,fechaingreso);
+                            MenuPaciente();
                             break;
                         case 2:
                             MenuBuscar();
@@ -85,6 +73,82 @@ namespace ALGORITMICAPROYECTO2
                 }
                 Console.Clear();
             }
+        }
+        private void MenuPaciente() {
+          
+                int choiceInMenu = -1;
+
+                while (choiceInMenu != 0)
+                {
+                    Console.WriteLine("------------------------------------------");
+                    Console.WriteLine("           Menu de Agregar Paciente       ");
+                    Console.WriteLine("------------------------------------------");
+                    Console.WriteLine("Que desea hacer:                          ");
+                    Console.WriteLine("     1) Agregar un paciente               ");
+                    Console.WriteLine("     2) Agregar varios pacientes          ");
+                    Console.WriteLine("     0) Salir                             ");
+                    Console.Write("Ingresa tu opcion: ");
+                    if (int.TryParse(Console.ReadLine(), out choiceInMenu))
+                    {
+                        switch (choiceInMenu)
+                        {
+                            case 0:
+                                break;
+                            case 1:
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("");
+                                Console.WriteLine("--------Añadir paciente---------");
+                                Console.WriteLine("");
+
+                                Console.ResetColor();
+                                Console.WriteLine("Nombre del paciente: ");
+                                string name = Console.ReadLine();
+                                Console.WriteLine("CI del paciente:");
+                                int id = Convert.ToInt32(Console.ReadLine());
+                                Console.WriteLine("Tipo de paciente:Internado o Ambulatorio ");
+                                string tipopaciente = Console.ReadLine();
+                                Console.WriteLine("Fecha de ingreso: ");
+                                string fechaingreso = Console.ReadLine();
+                                //REGISTRO ALMACENADO EN LAS DOS ESTRUCTURAS HASH DE 23
+                                hashtable.Añadir(id, name, tipopaciente, fechaingreso);
+                                hashtable2.Añadir(id, name, tipopaciente, fechaingreso);
+                            break;
+                            case 2:
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("");
+                                    Console.WriteLine("--------Añadir paciente---------");
+                                    Console.WriteLine("");
+
+                                    Console.ResetColor();
+                                    Console.WriteLine("Ingrese el numero de pacientes a ingresar");
+                                    int numero = Convert.ToInt32(Console.ReadLine());
+
+
+                                     for (int i=0; i <=numero; i++) {
+                                        //Console.WriteLine(nombres[i]);
+                                        int ids = new Random().Next(1000,2000);
+                                        string tipo="Internado";
+                                        
+                                        string date = Convert.ToString(new Random().Next(1, 30))+ "/"+Convert.ToString(new Random().Next(1, 12)+ "/"+Convert.ToString(new Random().Next(2018, 2020)));
+                                        hashtable.Añadir(ids, nombres[i], tipo, date);
+                                        hashtable2.Añadir(ids, nombres[i], tipo, date);
+                                      }
+                                   
+                                  
+                            break;
+                            default:
+                                Console.WriteLine("Opción invalida, intenta de nuevo");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Opción inválida");
+                        choiceInMenu = -1;
+                    }
+                
+            }
+
         }
         private void MenuBuscar() 
         {
